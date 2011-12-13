@@ -422,9 +422,8 @@ uint32 usb_cdcacm_tx(const uint8* buf, uint32 len) {
     }
 
     // We can only put VCOM_TX_EPSIZE bytes in the buffer
-    /* FIXME then why are we only copying half as many? */
-    if (len > VCOM_TX_EPSIZE / 2) {
-        len = VCOM_TX_EPSIZE / 2;
+    if (len > VCOM_TX_EPSIZE) {
+        len = VCOM_TX_EPSIZE;
     }
 
     // Try to load some bytes if we can
