@@ -5,7 +5,7 @@
  */
 
 OUTPUT_FORMAT ("elf32-littlearm", "elf32-bigarm", "elf32-littlearm")
-ENTRY(_start)
+ENTRY(_app_start)
 SEARCH_DIR(.)
 
 /*
@@ -33,8 +33,12 @@ EXTERN(__cs3_stack)
 PROVIDE(__cs3_stack = __cs3_region_start_ram + LENGTH(ram));
 
 /* Reset vector and chip reset entry point. See start.S */
-EXTERN(_start)
-PROVIDE(__cs3_reset = _start);
+EXTERN(_app_start)
+PROVIDE(__cs3_reset = _app_start);
+
+/* Exit also restarts */
+EXTERN(_exit)
+PROVIDE(_exit = _app_start);
 
 /* Heap boundaries, for libmaple */
 EXTERN(_lm_heap_start);
