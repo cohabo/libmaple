@@ -42,8 +42,8 @@
 
 .text
 .globl __exc_hardfault
+.weak __exc_hardfault
 .globl __exc_nmi
-.globl __exc_hardfault
 .globl __exc_memmanage
 .globl __exc_busfault
 .globl __exc_usagefault
